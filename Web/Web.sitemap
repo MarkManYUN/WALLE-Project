@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Default.aspx" title="网站首页"  description="">
+    <siteMapNode url="~/News/" title="新闻中心"  description="" >
+      <siteMapNode url="~/News/NewsList.aspx"
+              title="新闻列表" resourceKey="网站首页/新闻中心"/>
+      <siteMapNode url="~/News/NewsDetail.aspx"
+                    resourceKey="网站首页/新闻中心"/>
+    </siteMapNode>
+    <siteMapNode url="~/Service/" title="支持服务"  description="" >
+      <siteMapNode url="~/Service/inquire.aspx" title="查询成绩"  resourceKey="网站首页/支持服务" />
+      <siteMapNode url="~/Service/question.aspx" title="问题留言"  resourceKey="网站首页/支持服务" />
+      <siteMapNode url="~/Service/download.aspx" title="下载中心"  resourceKey="网站首页/支持服务" />
+      <siteMapNode url="~/Service/FAQ.aspx" title="常用问题"  resourceKey="网站首页/支持服务" />
+    </siteMapNode>
+    <siteMapNode url="~/Contact/" title="联系我们" description="">
+      <siteMapNode url="~/Contact/contactAbout.aspx" title="网站简介" resourceKey="网站首页/联系我们"></siteMapNode>
+      <siteMapNode url="~/Contact/contactUs.aspx" title="联系方式" resourceKey="网站首页/联系我们"></siteMapNode>
+      <siteMapNode url="~/Contact/contactFrom.aspx" title="请你留言" resourceKey="网站首页/联系我们"></siteMapNode>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

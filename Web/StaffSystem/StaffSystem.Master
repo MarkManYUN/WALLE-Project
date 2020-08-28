@@ -1,0 +1,632 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="StaffSystem.master.cs"  ClientIDMode="Static"  Inherits="WalleProject.Web.StaffSystem.StaffSystem" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>WALL-E员工系统 V1.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Le styles -->
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/loader-style.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="assets/js/button/ladda/ladda.min.css" />
+
+
+    <style type="text/css">
+        canvas#canvas4 {
+            position: relative;
+            top: 20px;
+        }
+    </style>
+     <style type="text/css">
+        #Button1 {
+            color: darkblue;
+            background-color: #000;
+        }
+    </style>
+
+    <style type="text/css">
+        .item:hover {
+            background-color: Silver;
+        }
+        /*分页控件*/
+        /*注意定义步骤*/
+        /*1. 定义外框*/
+        div.divPager {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        /*2. 定义不活动按钮: .aspNetDisabled为系统分配的类名*/
+        .divPager .aspNetDisabled {
+            color: Silver;
+            background-color: White;
+        }
+
+        /*3. 定义页码项通用格式 包括活动链接,非活动链接 当前页*/
+        .divPager a, .divPager span span {
+            padding: 3px 10px;
+            border: 1px solid #dadada;
+            border-radius: 4px;
+            color: #666;
+            background: #f3f3f3;
+        }
+
+            /*4. 活动超链接hover伪类 [非活动超链接没有href属性 (系统设定) ]*/
+            /*5. 覆盖当前页样式*/
+            .divPager a[href]:hover, .divPager span span {
+                background-color: #9CA1A4;
+                color: Black;
+            }
+
+    </style>
+
+     <script type="text/javascript">
+        $(document).ready(function () {
+            var lab_menu = $("#lab_menu").val();
+            $("#nav_user_menu_" + lab_menu).css("background", "#375378").css("border-left","5px solid #fff");
+             
+        });
+       
+    </script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/minus.png" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+        <input id="lab_menu" runat="server" style="display: none" />
+    
+    <div id="awwwards" style="max-width:64px;margin-top:25%;" class="right black"><a href="javascript:scrollTo(0,0);" target="_blank">回到顶部</a></div>
+    <!-- 预加载 -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- 顶部导航条 -->
+    <nav role="navigation" class="navbar navbar-static-top">
+        <div class="container-fluid">
+            <!-- 品牌和切换被分组以获得更好的移动显示 -->
+            <div class="navbar-header">
+                <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="entypo-menu"></span>
+                </button>
+                <button class="navbar-toggle toggle-menu-mobile toggle-left" type="button">
+                    <span class="entypo-list-add"></span>
+                </button>
+
+
+
+
+                <div id="logo-mobile" class="visible-xs">
+                    <h1>WALL-E<span>v1.0</span></h1>
+                </div>
+
+            </div>
+
+
+            <!-- 收集导航链接、表单和其他用于切换的内容 -->
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i style="font-size: 20px;" class="icon-conversation"></i>
+                            <div class="noft-red">23</div>
+                        </a>
+
+
+                        <ul style="margin: 11px 0 0 9px;" role="menu" class="dropdown-menu dropdown-wrap">
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/1.jpg" />Jhon Doe <b>Just Now</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/women/1.jpg" />Jeniffer <b>3 Min Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/2.jpg" />Dave <b>2 Hours Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/3.jpg" /><i>Keanu</i>  <b>1 Day Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/4.jpg" /><i>Masashi</i>  <b>2 Mounth Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div>See All Messege</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i style="font-size: 19px;" class="icon-warning tooltitle"></i>
+                            <div class="noft-green">5</div>
+                        </a>
+                        <ul style="margin: 12px 0 0 0;" role="menu" class="dropdown-menu dropdown-wrap">
+                            <li>
+                                <a href="#">
+                                    <span style="background: #DF2135" class="noft-icon maki-bus"></span><i>From Station</i>  <b>01B</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #AB6DB0" class="noft-icon maki-ferry"></span><i>Departing at</i>  <b>9:00 AM</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #FFA200" class="noft-icon maki-aboveground-rail"></span><i>Delay for</i>  <b>09 Min</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #86C440" class="noft-icon maki-airport"></span><i>Take of</i>  <b>08:30 AM</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #0DB8DF" class="noft-icon maki-bicycle"></span><i>Take of</i>  <b>08:30 AM</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div>See All Notification</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="LockScreen.aspx"><i data-toggle="tooltip" data-placement="bottom" title="锁屏" style="font-size: 20px;" class=" icon-lock tooltitle"></i></a>
+                    </li>
+
+                </ul>
+                <div id="nt-title-container" class="navbar-left running-text visible-lg">
+                    <ul class="date-top">
+                        <li class="entypo-calendar" style="margin-right: 5px"></li>
+                        <li id="Date"></li>
+
+
+                    </ul>
+                    <!--时间日期-->
+                    <ul id="digital-clock" class="digital">
+                        <li class="entypo-clock" style="margin-right: 5px"></li>
+                        <li class="hour"></li>
+                        <li>:</li>
+                        <li class="min"></li>
+                        <li>:</li>
+                        <li class="sec"></li>
+                        <li class="meridiem"></li>
+                    </ul>
+                    <ul id="nt-title">
+                        <li>
+                            <i class="wi-day-lightning"></i>&#160;&#160;淮安&#160;
+                            <i class="glyphicon glyphicon-map-marker"></i>清江浦区(14.2 °C)
+                        </li>
+                        <li>
+                            <i class="glyphicon glyphicon-bell"></i>&#160;&#160;您有1条新消息，请查收！
+                        </li>
+                        <li>
+                            <i class="wi-day-lightning"></i>&#160;&#160;上海&#160;
+                            <i class="glyphicon glyphicon-map-marker"></i>浦东新区 (22.2 °C)
+                        </li>
+                        <li>
+                            <i class="glyphicon glyphicon-envelope"></i>&#160;&#160;欢迎来到WALL-E员工系统
+                        </li>
+
+                    </ul>
+                </div>
+
+                <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" class="admin-pic img-circle" src="assets/img/photo1.jpg"  id="img_photo" runat="server"/>
+                            
+                            您好,
+                            <label runat="server" id="txt_name"></label>
+                            <b class="caret"></b>
+                        </a>
+                        <ul style="margin-top: 14px;" role="menu" class="dropdown-setting dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-user"></span>&#160;&#160;我的头像
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-vcard"></span>&#160;&#160;用户设置
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-lifebuoy"></span>&#160;&#160;帮助
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="http://themeforest.net/item/apricot-navigation-admin-dashboard-template/7664475?WT.ac=category_item&WT.z_author=themesmile">
+                                    <span class="entypo-basket"></span>&#160;&#160; 我的购物车
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="icon-gear"></span>&#160;&#160;皮肤</a>
+                        <ul role="menu" class="dropdown-setting dropdown-menu">
+
+                            <li class="theme-bg">
+                                <div id="button-bg"></div>
+                                <div id="button-bg2"></div>
+                                <div id="button-bg3"></div>
+                                <div id="button-bg5"></div>
+                                <div id="button-bg6"></div>
+                                <div id="button-bg7"></div>
+                                <div id="button-bg8"></div>
+                                <div id="button-bg9"></div>
+                                <div id="button-bg10"></div>
+                                <div id="button-bg11"></div>
+                                <div id="button-bg12"></div>
+                                <div id="button-bg13"></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hidden-xs">
+                        <a class="toggle-left" href="../Admin/Login.aspx?com=logout">
+                            <i class="glyphicon glyphicon-remove-circle"></i>
+                            <span>注销</span>
+                        </a>
+                    </li>
+
+                    <li class="hidden-xs" runat="server">
+                        <a class="toggle-left" href="../Default.aspx">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span>主页</span>
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- /结束底顶部导航条 -->
+
+    <!-- 旁边菜单 -->
+    <div id="skin-select">
+        <div id="logo">
+            <h1>wall-e<span>员工系统&#160; v1.0</span></h1>
+        </div>
+
+        <a id="toggle">
+            <span class="entypo-menu"></span>
+        </a>
+        <div class="dark">
+            <form action="#">
+                <span>
+                    <input type="text" name="search" value="" class="search rounded id_search" placeholder="查找菜单..." autofocus="" />
+                </span>
+            </form>
+        </div>
+
+        <div class="search-hover">
+            <form id="demo-2">
+                <input type="search" placeholder="查找菜单..." class="id_search" />
+            </form>
+        </div>
+
+
+        <div class="search-hover">
+            <form id="demo-2">
+                <input type="search" placeholder="查找菜单..." class="id_search" />
+            </form>
+        </div>
+
+
+
+
+        <div class="skin-part">
+            <div id="tree-wrap">
+                <div class="side-bar">
+                    <ul class="topnav menu-left-nest">
+                        <asp:ListView ID="ListView1" runat="server" DataSourceID="WALLE_StaffMenu" ItemPlaceholderID="ParentMunu">
+                            <LayoutTemplate>
+                                <div runat="server" id="ParentMunu"></div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <li>
+                                    <a href="#" style="border-left: 0px solid!important;" class="title-menu-left">
+
+                                        <span><%#Eval("menuc_name") %></span>
+                                        <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                                        <asp:ListView ID="ListView2" DataSourceID="childDataSource" runat="server" ItemPlaceholderID="ChildMenu">
+                                            <LayoutTemplate>
+                                                <span runat="server" id="ChildMenu"></span>
+                                            </LayoutTemplate>
+                                            <ItemTemplate>
+                                                <li>
+                                                    <a class='<%#Eval("StaM_Icon") %>' href='<%#Eval("StaM_Url") %>?menuid=<%#Eval("StaM_ID") %>' id='<%#"nav_user_menu_"+ Eval("StaM_ID")%>' title='<%#Eval("StaM_Name") %>'>
+
+                                                        <span><%#Eval("StaM_Name") %></span>
+
+                                                    </a>
+                                                </li>
+                                            </ItemTemplate>
+                                        </asp:ListView>
+                                        <asp:SqlDataSource runat="server" ID="childDataSource"
+                                            ConnectionString="<%$ ConnectionStrings:walledbConnectionString %>"
+                                            ProviderName="<%$ ConnectionStrings:walledbConnectionString.ProviderName %>"
+                                            SelectCommand='<%#Eval("menuc_ID", "Select * from t_staffmenu where  StaM_MenuClass={0} AND ") + Request.Cookies["USER_TYPE"].Value %>'></asp:SqlDataSource>
+                                    </a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </ul>
+
+                    <asp:SqlDataSource ID="WALLE_StaffMenu" runat="server"
+                        ConnectionString="<%$ ConnectionStrings:walledbConnectionString %>"
+                        ProviderName="<%$ ConnectionStrings:walledbConnectionString.ProviderName %>"
+                        SelectCommand="SELECT * FROM t_menucategory WHERE (menuc_ID &gt;= ?)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="5" Name="menuc_ID" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+
+
+
+
+                    <div class="side-dash">
+                        <h3>
+                            <span>系统数据</span>
+                        </h3>
+                        <ul class="side-dashh-list">
+                            <li>平均访问量
+                                <span>25k<i style="color: #44BBC1;" class="fa fa-arrow-circle-up"></i>
+                                </span>
+                            </li>
+                            <li>今日访问量
+                                <span>80%<i style="color: #AB6DB0;" class="fa fa-arrow-circle-down"></i>
+                                </span>
+                            </li>
+
+                        </ul>
+                        <h3>
+                            <span>访问量</span>
+                        </h3>
+                        <ul class="side-bar-list">
+                            <li>平均访问量
+                                <div class="linebar">5,7,8,9,3,5,3,8,5</div>
+                            </li>
+                            <li>今日访问量
+                                <div class="linebar2">9,7,8,9,5,9,6,8,7</div>
+                            </li>
+
+                        </ul>
+                        <h3>
+                            <span>今日访客</span>
+                        </h3>
+                        <div id="g1" style="height: 180px" class="gauge"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 结束旁边菜单 -->
+
+
+
+    <!--  主窗体 -->
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+
+
+            <form id="Fomr2" runat="server">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <!-- 内容 -->
+                <!--标题 -->
+                <div class="row">
+                    <div id="paper-top">
+                        <div class="col-sm-3">
+                            <h2 class="tittle-content-header">
+                                <i class="icon-media-record"></i>
+                                <span>
+                                    <asp:ContentPlaceHolder ID="TitleHolder" runat="server"></asp:ContentPlaceHolder>
+                                </span>
+                            </h2>
+
+                        </div>
+
+                        <div class="col-sm-7">
+                            <div class="devider-vertical visible-lg"></div>
+                            <div class="tittle-middle-header">
+
+
+                                <div class="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <span class="tittle-alert entypo-info-circled"></span>
+                                    欢迎回来,&nbsp;
+                                <strong>
+
+                                    <label runat="server" id="username"></label>
+                                    <label runat="server" id="usertype"></label>
+                                </strong>&nbsp;&nbsp;<label runat="server" id="lastlogn"></label>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="devider-vertical visible-lg"></div>
+                            <div class="btn-group btn-wigdet pull-right visible-lg">
+                                <div class="btn">
+                                    小工具
+                                </div>
+                                <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">切换下拉</span>
+                                </button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li>
+                                        <a href="#">
+                                            <span class="entypo-plus-circled margin-iconic"></span>新工具</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="entypo-heart margin-iconic"></span>我的喜爱</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="entypo-cog margin-iconic"></span>设置</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--/ 结束标题 -->
+
+                <!-- 面包屑导航 -->
+                <ul id="breadcrumb">
+                    <li>
+                        <span class="entypo-home"></span>
+                    </li>
+                    <li><i class="fa fa-lg fa-angle-right"></i>
+                    </li>
+                    <li><a href="../StaffSystem/Default.aspx" title="主页">主页</a>
+                    </li>
+                    <li><i class="fa fa-lg fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <asp:ContentPlaceHolder ID="navHolder" runat="server"></asp:ContentPlaceHolder>
+                    </li>
+                    <li class="pull-right">
+                        <div class="input-group input-widget">
+
+                            <input style="border-radius: 15px" type="text" placeholder="查找..." class="form-control" />
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- 结束面包屑导航 -->
+
+                <div class="content-wrap">
+                    <div class="row">
+
+
+                        <div class="col-sm-12">
+                            <!-- 空白页-->
+
+                            <div class="nest" id="Blank_PageClose">
+                                <div class="title-alt">
+                                    <h6>
+                                        <img src="../img/logo_3.png" />
+                                    </h6>
+                                    <div class="titleClose">
+                                        <a class="gone" href="#Blank_PageClose">
+                                            <span class="entypo-cancel"></span>
+                                        </a>
+                                    </div>
+                                    <div class="titleToggle">
+                                        <a class="nav-toggle-alt" href="#Blank_Page_Content">
+                                            <span class="entypo-up-open"></span>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="body-nest" id="Blank_Page_Content">
+
+                                    <asp:ContentPlaceHolder ID="ContentHolder" runat="server"></asp:ContentPlaceHolder>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 结束空白页 -->
+                    </div>
+
+
+                    <asp:ContentPlaceHolder ID="NewHolder" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </form>
+
+            <!-- /END OF CONTENT -->
+
+
+
+            <!-- FOOTER -->
+            <div class="footer-space"></div>
+            <div id="footer">
+                <div class="devider-footer-left"></div>
+                <div class="time">
+                    <p id="spanDate">
+                        <p id="clock">
+                </div>
+                <div class="copyright">
+
+                    <span class="glyphicon glyphicon-globe"></span>2018 &nbsp;
+                        (WALL-E HYIT) 基于互联网+的WALL-E可再生资源回收系统  版权所有
+                </div>
+                <div class="devider-footer"></div>
+
+            </div>
+            <!-- / 结束页脚-->
+
+
+        </div>
+    </div>
+    <!--  结束空白页 -->
+
+
+
+    <!-- 主要效果 -->
+    <script type="text/javascript" src="assets/js/preloader.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/load.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <!-- 新效果 -->
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script src="assets/js/progress-bar/src/jquery.velocity.min.js"></script>
+    <script src="assets/js/progress-bar/number-pb.js"></script>
+    <script src="assets/js/progress-bar/progress-app.js"></script>
+
+    <!-- js效果导入和编写 -->
+    <asp:ContentPlaceHolder ID="JavaScriptHolder" runat="server"></asp:ContentPlaceHolder>
+  
+
+</body>
+
+</html>
+

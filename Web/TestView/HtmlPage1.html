@@ -1,0 +1,813 @@
+﻿							<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="StaffSystem.master.cs" Inherits="WalleProject.Web.StaffSystem.StaffSystem" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>WALL-E员工管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Le styles -->
+
+
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/loader-style.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="assets/js/progress-bar/number-pb.css" />
+
+
+
+
+
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/minus.png">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+
+    </script>
+</head>
+
+<body>
+
+    <div id="awwwards" class="right black">
+        <a href="#" target="_blank">回到顶部</a>
+    </div>
+
+    <!-- 预加载 -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- 顶部导航条 -->
+    <nav role="navigation" class="navbar navbar-static-top">
+        <div class="container-fluid">
+            <!-- 品牌和切换被分组以获得更好的移动显示 -->
+            <div class="navbar-header">
+                <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="entypo-menu"></span>
+                </button>
+                <button class="navbar-toggle toggle-menu-mobile toggle-left" type="button">
+                    <span class="entypo-list-add"></span>
+                </button>
+
+
+
+
+                <div id="logo-mobile" class="visible-xs">
+                    <h1>WALL-E管理<span>v1.2</span></h1>
+                </div>
+
+            </div>
+
+
+            <!-- 收集导航链接、表单和其他用于切换的内容 -->
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i style="font-size: 20px;" class="icon-conversation"></i>
+                            <div class="noft-red">23</div>
+                        </a>
+
+                        <!--消息-->
+                        <ul style="margin: 11px 0 0 9px;" role="menu" class="dropdown-menu dropdown-wrap">
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/1.jpg">Jhon Doe <b>Just Now</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/women/1.jpg">Jeniffer <b>3 Min Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/2.jpg">Dave <b>2 Hours Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/3.jpg"><i>Keanu</i>  <b>1 Day Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/4.jpg"><i>Masashi</i>  <b>2 Mounth Ago</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div>See All Messege</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i style="font-size: 19px;" class="icon-warning tooltitle"></i>
+                            <div class="noft-green">5</div>
+                        </a>
+                        <!--提示-->
+                        <ul style="margin: 12px 0 0 0;" role="menu" class="dropdown-menu dropdown-wrap">
+                            <li>
+                                <a href="#">
+                                    <span style="background: #DF2135" class="noft-icon maki-bus"></span><i>From Station</i>  <b>01B</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #AB6DB0" class="noft-icon maki-ferry"></span><i>Departing at</i>  <b>9:00 AM</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #FFA200" class="noft-icon maki-aboveground-rail"></span><i>Delay for</i>  <b>09 Min</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #86C440" class="noft-icon maki-airport"></span><i>Take of</i>  <b>08:30 AM</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <span style="background: #0DB8DF" class="noft-icon maki-bicycle"></span><i>Take of</i>  <b>08:30 AM</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div>See All Notification</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i data-toggle="tooltip" data-placement="bottom" title="Help" style="font-size: 20px;" class="icon-help tooltitle"></i></a>
+                    </li>
+
+                </ul>
+                <!--时间日期-->
+                <div id="nt-title-container" class="navbar-left running-text visible-lg">
+                    <ul class="date-top">
+                        <li class="entypo-calendar" style="margin-right: 5px"></li>
+                        <li id="Date"></li>
+                    </ul>
+
+                    <ul id="digital-clock" class="digital">
+                        <li class="entypo-clock" style="margin-right: 5px"></li>
+                        <li class="hour"></li>
+                        <li>:</li>
+                        <li class="min"></li>
+                        <li>:</li>
+                        <li class="sec"></li>
+                        <li class="meridiem"></li>
+                    </ul>
+
+                    <!--轮换消息-->
+                    <ul id="nt-title">
+                        <li>
+                            <i class="wi-day-lightning"></i>&#160;&#160;淮安&#160;
+                            <i class="glyphicon glyphicon-map-marker"></i>清江浦区(14.2 °C)
+                        </li>
+                        <li>
+                            <i class="glyphicon glyphicon-bell"></i>&#160;&#160;您有1条新消息，请查收！
+                        </li>
+                        <li>
+                            <i class="wi-day-lightning"></i>&#160;&#160;上海&#160;
+                            <i class="glyphicon glyphicon-map-marker"></i>浦东新区 (22.2 °C)
+                        </li>
+                        <li>
+                            <i class="glyphicon glyphicon-envelope"></i>&#160;&#160;欢迎来到WALL-E员工系统
+                        </li>
+                    </ul>
+                </div>
+
+                <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" class="admin-pic img-circle" src="http://api.randomuser.me/portraits/thumb/men/10.jpg">
+                            您好,
+                            <label runat="server" id="txt_name"></label>
+                            <b class="caret"></b>
+                        </a>
+                        <ul style="margin-top: 14px;" role="menu" class="dropdown-setting dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-user"></span>&#160;&#160;我的头像
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-vcard"></span>&#160;&#160;用户设置
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-lifebuoy"></span>&#160;&#160;帮助
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="http://themeforest.net/item/apricot-navigation-admin-dashboard-template/7664475?WT.ac=category_item&WT.z_author=themesmile">
+                                    <span class="entypo-basket"></span>&#160;&#160; 我的购物车
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="icon-gear"></span>&#160;&#160;皮肤
+                        </a>
+                        <ul role="menu" class="dropdown-setting dropdown-menu">
+
+                            <li class="theme-bg">
+                                <div id="button-bg"></div>
+                                <div id="button-bg2"></div>
+                                <div id="button-bg3"></div>
+                                <div id="button-bg5"></div>
+                                <div id="button-bg6"></div>
+                                <div id="button-bg7"></div>
+                                <div id="button-bg8"></div>
+                                <div id="button-bg9"></div>
+                                <div id="button-bg10"></div>
+                                <div id="button-bg11"></div>
+                                <div id="button-bg12"></div>
+                                <div id="button-bg13"></div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="hidden-xs" runat="server" id="exit">
+                        <a class="toggle-left" href="../Admin/Login.aspx">
+                            <i class="glyphicon glyphicon-remove-circle"></i>
+                            <span>注销</span>
+                        </a>
+                    </li>
+                    <li class="hidden-xs" runat="server">
+                        <a class="toggle-left" href="../Default.aspx">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span>主页</span>
+
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- /结束底顶部导航条 -->
+    <!-- 侧菜单 -->
+    <div id="skin-select" style="border:1px solid blue;">
+        <div id="logo">
+            <h1>wall-e<span>员工系统&#160; v1.0</span></h1>
+        </div>
+
+        <a id="toggle">
+            <span class="entypo-menu"></span>
+        </a>
+        <div class="dark">
+            <form action="#">
+                <span>
+                    <input type="text" name="search" value="" class="search rounded id_search" placeholder="查找..." autofocus="">
+                </span>
+            </form>
+        </div>
+
+        <div class="search-hover">
+            <form id="demo-1">
+                <input type="search" placeholder="搜索..." class="id_search" />
+            </form>
+        </div>
+
+        <div class="search-hover">
+            <form id="demo-2">
+                <input type="search" placeholder="查找..." class="id_search" />
+            </form>
+        </div>
+
+
+        <div class="skin-part">
+            <div id="tree-wrap">
+                <div class="side-bar">
+
+                    <ul class="topnav menu-left-nest">
+                        <asp:ListView ID="ListView1" runat="server" DataSourceID="WALLE_StaffMenu" ItemPlaceholderID="ParentMunu">
+                            <LayoutTemplate>
+                                <div runat="server" id="ParentMunu"></div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <li>
+                                    <a href="#" style="border-left: 0px solid!important;" class="title-menu-left">
+
+                                        <span><%#Eval("menuc_name") %></span>
+                                        <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+                                        <asp:ListView ID="ListView2" DataSourceID="childDataSource" runat="server" ItemPlaceholderID="ChildMenu">
+                                            <LayoutTemplate>
+                                                <span runat="server" id="ChildMenu"></span>
+                                            </LayoutTemplate>
+                                            <ItemTemplate>
+                                <li>
+                                    <a class='<%#Eval("StaM_Icon") %>' href='<%#Eval("StaM_Url") %>' title='<%#Eval("StaM_Name") %>'>
+
+                                        <span><%#Eval("StaM_Name") %></span>
+
+                                    </a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:ListView>
+                        <asp:SqlDataSource runat="server" ID="childDataSource"
+                                           ConnectionString="<%$ ConnectionStrings:walledbConnectionString %>"
+                                           ProviderName="<%$ ConnectionStrings:walledbConnectionString.ProviderName %>"
+                                           SelectCommand='<%#Eval("menuc_ID", "Select * from t_staffmenu where  StaM_MenuClass={0} AND ") + Request.Cookies["USER_TYPE"].Value %>'></asp:SqlDataSource>
+                        </a>
+                        </li>
+                        </ItemTemplate>
+                        </asp:ListView>
+                    </ul>
+
+                    <asp:SqlDataSource ID="WALLE_StaffMenu" runat="server"
+                                       ConnectionString="<%$ ConnectionStrings:walledbConnectionString %>"
+                                       ProviderName="<%$ ConnectionStrings:walledbConnectionString.ProviderName %>"
+                                       SelectCommand="SELECT * FROM t_menucategory WHERE (menuc_ID &gt;= ?)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="5" Name="menuc_ID" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+
+
+
+                    <div class="side-dash">
+                        <h3>
+                            <span>系统数据</span>
+                        </h3>
+                        <ul class="side-dashh-list">
+                            <li>
+                                平均访问量
+                                <span>
+                                    25k<i style="color: #44BBC1;" class="fa fa-arrow-circle-up"></i>
+                                </span>
+                            </li>
+                            <li>
+                                今日访问量
+                                <span>
+                                    80%<i style="color: #AB6DB0;" class="fa fa-arrow-circle-down"></i>
+                                </span>
+                            </li>
+                        </ul>
+                        <h3>
+                            <span>访问量</span>
+                        </h3>
+                        <ul class="side-bar-list">
+                            <li>
+                                平均访问量
+                                <div class="linebar">5,7,8,9,3,5,3,8,5</div>
+                            </li>
+                            <li>
+                                今日访问量
+                                <div class="linebar2">9,7,8,9,5,9,6,8,7</div>
+                            </li>
+                        </ul>
+                        <h3>
+                            <span>今日访客</span>
+                        </h3>
+                        <div id="g1" style="height: 180px" class="gauge"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 结束侧面菜单 -->
+    <!--  内容页 -->
+    <div class="wrap-fluid" style="border:1px solid red;">
+        <div class="container-fluid paper-wrap bevel tlbr">
+            <!--标题 -->
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-lg-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-window"></i>
+                            <span>
+                                <label runat="server" id="usertype"></label>
+                            </span>
+                        </h2>
+
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="devider-vertical visible-lg"></div>
+                        <div class="tittle-middle-header">
+
+                            <div class="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <span class="tittle-alert entypo-info-circled"></span>
+                                欢迎回来,&nbsp;
+                                <strong>
+                                    <label runat="server" id="username"></label>
+                                </strong>&nbsp;&nbsp;<label runat="server" id="lastlogn"></label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="devider-vertical visible-lg"></div>
+                        <div class="btn-group btn-wigdet pull-right visible-lg">
+                            <div class="btn">
+                                小工具
+                            </div>
+                            <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <span class="entypo-plus-circled margin-iconic"></span>新工具
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="entypo-heart margin-iconic"></span>我的喜爱
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="entypo-cog margin-iconic"></span>设置
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ 结束标题 -->
+            <!-- 面包屑导航 -->
+            <ul id="breadcrumb">
+                <li>
+                    <span class="entypo-home"></span>
+                </li>
+                <li>
+                    <i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li>
+                    <a href="../Default.aspx" title="Sample page 1">主页</a>
+                </li>
+                <li>
+                    <i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li>
+                    <a href="../Admin/Login.aspx" title="Sample page 1">登录</a>
+                </li>
+                <li class="pull-right">
+                    <div class="input-group input-widget">
+
+                        <input style="border-radius: 15px" type="text" placeholder="查找..." class="form-control" />
+                    </div>
+                </li>
+            </ul>
+            <!-- 结束面包屑导航 -->
+
+            <div class="content-wrap">
+                <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <!-- 空白页-->
+
+                        <div class="nest" id="Blank_PageClose">
+                            <div class="title-alt">
+                                <h6>
+                                    模板页
+                                </h6>
+                                <div class="titleClose">
+                                    <a class="gone" href="#Blank_PageClose">
+                                        <span class="entypo-cancel"></span>
+                                    </a>
+                                </div>
+                                <div class="titleToggle">
+                                    <a class="nav-toggle-alt" href="#Blank_Page_Content">
+                                        <span class="entypo-up-open"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="body-nest" id="Blank_Page_Content">
+
+                                <form id="Form1" method="post" runat="server">
+                                    <asp:ContentPlaceHolder ID="ContentHolder" runat="server"></asp:ContentPlaceHolder>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF BLANK PAGE -->
+
+
+                </div>
+
+
+
+                <!-- /END OF CONTENT -->
+                <!--  页脚 -->
+                <div class="footer-space"></div>
+                <div id="footer">
+                    <div class="devider-footer-left"></div>
+                    <div class="time">
+                        <p id="spanDate"></p>
+                        <p id="clock"></p>
+                    </div>
+                    <div class="copyright">
+
+                        <span class="glyphicon glyphicon-globe"></span>2018 &nbsp;
+                        (WALL-E HYIT) 基于互联网+的WALL-E可再生资源回收系统  版权所有
+                    </div>
+                    <div class="devider-footer"></div>
+
+
+                </div>
+                <!-- /  结束页脚 -->
+
+
+
+            </div>
+
+        </div>
+
+        <!-- 右滑块内容-->
+        <div class="sb-slidebar sb-right">
+            <div class="right-wrapper">
+                <div class="row">
+                    <h3>
+                        <span><i class="entypo-gauge"></i>&nbsp;&nbsp;MAIN WIDGET</span>
+                    </h3>
+                    <div class="col-sm-12">
+
+                        <div class="widget-knob">
+                            <span class="chart" style="position:relative" data-percent="86">
+                                <span class="percent"></span>
+                            </span>
+                        </div>
+                        <div class="widget-def">
+                            <b>Distance traveled</b>
+                            <br>
+                            <i>86% to the check point</i>
+                        </div>
+
+                        <div class="widget-knob">
+                            <span class="speed-car" style="position:relative" data-percent="60">
+                                <span class="percent2"></span>
+                            </span>
+                        </div>
+                        <div class="widget-def">
+                            <b>The average speed</b>
+                            <br>
+                            <i>30KM/h 平均速度</i>
+                        </div>
+
+
+                        <div class="widget-knob">
+                            <span class="overall" style="position:relative" data-percent="25">
+                                <span class="percent3"></span>
+                            </span>
+                        </div>
+                        <div class="widget-def">
+                            <b>Overall result</b>
+                            <br>
+                            <i>30KM/h avarage Result</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:0;" class="right-wrapper">
+                <div class="row">
+                    <h3>
+                        <span><i class="entypo-chat"></i>&nbsp;&nbsp;CHAT</span>
+                    </h3>
+                    <div class="col-sm-12">
+                        <span class="label label-warning label-chat">Online</span>
+                        <ul class="chat">
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-circle" src="http://api.randomuser.me/portraits/thumb/men/20.jpg">
+                                    </span><b>Dave Junior</b>
+                                    <br><i>Last seen : 08:00 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-circle" src="http://api.randomuser.me/portraits/thumb/men/21.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-circle" src="http://api.randomuser.me/portraits/thumb/men/22.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                        <span class="label label-chat">Offline</span>
+                        <ul class="chat">
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/23.jpg">
+                                    </span><b>Dave Junior</b>
+                                    <br><i>Last seen : 08:00 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/24.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/25.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右滑块内容的结束-->
+        <!--  结束内容页 -->
+
+
+
+        <script type="text/javascript" src="assets/js/jquery.js"></script>
+        <script src="assets/js/progress-bar/src/jquery.velocity.min.js"></script>
+        <script src="assets/js/progress-bar/number-pb.js"></script>
+        <script src="assets/js/progress-bar/progress-app.js"></script>
+
+
+
+        <!-- MAIN EFFECT -->
+        <script type="text/javascript" src="assets/js/preloader.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>
+        <script type="text/javascript" src="assets/js/load.js"></script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
+
+
+
+
+        <!-- GAGE -->
+
+
+        <script type="text/javascript" src="assets/js/chart/jquery.flot.js"></script>
+        <script type="text/javascript" src="assets/js/chart/jquery.flot.resize.js"></script>
+        <script type="text/javascript" src="assets/js/chart/realTime.js"></script>
+        <script type="text/javascript" src="assets/js/speed/canvasgauge-coustom.js"></script>
+        <script type="text/javascript" src="assets/js/countdown/jquery.countdown.js"></script>
+
+
+
+        <script src="assets/js/jhere-custom.js"></script>
+
+        <script>
+            var gauge4 = new Gauge("canvas4", {
+                'mode': 'needle',
+                'range': {
+                    'min': 0,
+                    'max': 90
+                }
+            });
+            gauge4.draw(Math.floor(Math.random() * 90));
+            var run = setInterval(function () {
+                gauge4.draw(Math.floor(Math.random() * 90));
+            }, 3500);
+        </script>
+
+
+        <script type="text/javascript">
+            /* Javascript
+             *
+             * See http://jhere.net/docs.html for full documentation
+             */
+            $(window).on('load', function () {
+                $('#mapContainer').jHERE({
+                    center: [52.500556, 13.398889],
+                    type: 'smart',
+                    zoom: 10
+                }).jHERE('marker', [52.500556, 13.338889], {
+                    icon: 'assets/img/marker.png',
+                    anchor: {
+                        x: 12,
+                        y: 32
+                    },
+                    click: function () {
+                        alert('Hallo from Berlin!');
+                    }
+                })
+                    .jHERE('route', [52.711, 13.011], [52.514, 13.453], {
+                        color: '#FFA200',
+                        marker: {
+                            fill: '#86c440',
+                            text: '#'
+                        }
+                    });
+            });
+        </script>
+        <script type="text/javascript">
+            var output, started, duration, desired;
+
+            // Constants
+            duration = 5000;
+            desired = '50';
+
+            // Initial setup
+            output = $('#speed');
+            started = new Date().getTime();
+
+            // Animate!
+            animationTimer = setInterval(function () {
+                // If the value is what we want, stop animating
+                // or if the duration has been exceeded, stop animating
+                if (output.text().trim() === desired || new Date().getTime() - started > duration) {
+                    console.log('animating');
+                    // Generate a random string to use for the next animation step
+                    output.text('' + Math.floor(Math.random() * 60)
+
+                    );
+
+                } else {
+                    console.log('animating');
+                    // Generate a random string to use for the next animation step
+                    output.text('' + Math.floor(Math.random() * 120)
+
+                    );
+                }
+            }, 5000);
+        </script>
+        <script type="text/javascript">
+            $('#getting-started').countdown('2015/01/01', function (event) {
+                $(this).html(event.strftime(
+
+                    '<span>%M</span>' + '<span class="start-min">:</span>' + '<span class="start-min">%S</span>'));
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>
